@@ -6,10 +6,14 @@ from rest_framework.views import APIView
 from .serializers import RegistrationSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
+from drf_yasg.utils import swagger_auto_schema
 
 User = get_user_model()
 
 class RegistrationAPIView(APIView):
+
+    @swagger_auto_schema(operations_description='Register user',
+                         request_body=RegistrationSerializer)
     def post(self, request):
         serializer = RegistrationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

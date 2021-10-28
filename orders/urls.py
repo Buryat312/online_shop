@@ -1,11 +1,11 @@
-# from rest_framework.routers import SimpleRouter
+from rest_framework.routers import SimpleRouter
 
-# from products.views import OrderViewSet
+from orders.views import OrderListView
 
-# router = SimpleRouter()
+router = SimpleRouter()
 
-# router.register('orders', OrderViewSet)
+router.register('orders', OrderListView)
 
-# urlpatterns = []
+urlpatterns = []
 
-# urlpatterns += router.urls
+urlpatterns += router.urls

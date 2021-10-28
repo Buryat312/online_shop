@@ -14,7 +14,7 @@ class Cart(models.Model):
     products = models.ManyToManyField('products.Product', through='CartProduct')
         
     def __str__(self):
-        return f'Список продуктов в корзине пользовотеля {self.name}: {self.product_list}. Полная стоимость:{self.total_amount}'
+        return f'Список продуктов в корзине пользовотеля {self.owner}: {self.products}. Полная стоимость:{self.total_amount}'
 
 class CartProduct(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
