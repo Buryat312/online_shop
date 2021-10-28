@@ -38,3 +38,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/swagger/', schema_view.with_ui(), name='schema-json'),
 ]
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls')),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('api/v1/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'), 
+    path('api/v1/', include('products.urls')),
+    path('api/v1/', include('categories.urls')), 
+    path('api/v1/', include('carts.urls')),  
+    path('api/v1/', include('accounts.urls')),
+]

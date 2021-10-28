@@ -41,6 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #regist
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
     # 3rd party dependencies
     'rest_framework',
     'rest_framework.authtoken',
@@ -55,6 +60,8 @@ INSTALLED_APPS = [
     
 ]
 
+SITE_ID = 1
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,6 +73,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myshop.urls'
+
 
 TEMPLATES = [
     {
@@ -143,3 +151,21 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.User'
+
+
+
+SWAGGER_SETTINGS = {
+    'PERSIT_AUTH': True,
+    'SECURITY_DEFINITIONS':{
+        'Basic':{
+            'type': 'basic'
+        },
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
